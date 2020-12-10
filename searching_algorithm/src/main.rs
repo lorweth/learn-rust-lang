@@ -2,7 +2,7 @@ use std::io;
 use rand::Rng;
 
 // Khởi tạo mảng
-pub fn array_initial (arr: &mut [i32]) -> &mut [i32]{
+fn array_initial (arr: &mut [i32]) -> &mut [i32]{
     let mut i: usize = 0;
     let n = arr.len();
     while i < n {
@@ -14,7 +14,7 @@ pub fn array_initial (arr: &mut [i32]) -> &mut [i32]{
 }
 
 // Khởi tạo mảng tăng dần
-pub fn array_initial_ordered (arr: &mut [i32]) -> &mut [i32] {
+fn array_initial_ordered (arr: &mut [i32]) -> &mut [i32] {
     let mut i: usize = 1;
     let n = arr.len();
     while i < n {
@@ -25,6 +25,16 @@ pub fn array_initial_ordered (arr: &mut [i32]) -> &mut [i32] {
     arr
 }
 
+// In mảng
+fn print_array (arr: &mut [i32]){
+    println!("Xuất mảng");
+    let mut i = 0;
+    while i < arr.len() {
+        print!(" {} ", arr[i]);
+        i = i + 1;
+    } 
+    println!();
+}
 
 // tìm kiếm tuyến tính
 fn linear_search(arr: &mut [i32], x: i32) -> i32 {
@@ -94,18 +104,14 @@ fn interpolation_search(arr: &mut [i32], x:i32) -> i32 {
 }
 
 fn main(){
-    const N:usize = 10;
+    const N:usize = 100;
     let mut arr:&mut [i32] = &mut [0 ; N+1]; // Khởi tạo mảng mới n + 1 phần tử 0 
 
     
     //array_initial(&mut arr); // không có thứ tự
     array_initial_ordered(&mut arr);
 
-    println!("Xuất mảng");
-    for item in arr.iter() {
-        print!(" {} ", item);
-    }
-    println!();
+    print_array(arr);
     
 
     println!("Nhập một số cần tìm");
